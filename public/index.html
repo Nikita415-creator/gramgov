@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>GovnoGram 1.0</title>
+  <style>
+    body {
+      background-color: #222;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      width: 100%;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #444;
+      color: #fff;
+      text-align: center;
+      font-size: 24px;
+      padding: 10px 0;
+      z-index: 999;
+    }
+
+    #users {
+      width: 200px;
+      background-color: #333;
+      padding: 60px 10px 10px;
+      border-right: 1px solid #555;
+      box-sizing: border-box;
+    }
+
+    #chat-container {
+      flex: 1;
+      padding: 60px 20px 80px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }
+
+    #input-container {
+      position: fixed;
+      bottom: 0;
+      left: 200px;
+      width: calc(100% - 200px);
+      background-color: #111;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      box-sizing: border-box;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #666;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .system {
+      font-style: italic;
+      color: #aaa;
+    }
+    .message {
+      background: #333;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      color: white;
+      box-shadow: 0 0 5px #00000077;
+    }
+
+    .nick {
+      font-weight: bold;
+      margin-bottom: 4px;
+      color: #1e90ff;
+    }
+
+    .text {
+      white-space: pre-wrap;
+    }
+
+    .my-message {
+      background-color: #2c2f33;
+      align-self: flex-end;
+    }
+
+    .other-message {
+      background-color: #3b3e44;
+      align-self: flex-start;
+    }
+  </style>
+</head>
+<body>
+
+<header>GovnoGram 1.0</header>
+
+<div id="users">
+  <h3>Онлайн</h3>
+  <ul id="userList"></ul>
+</div>
+
+<div id="chat-container">
+  <div id="messages"></div>
+</div>
+
+<div id="input-container">
+  <input type="text" id="messageInput" placeholder="Введите сообщение...">
+  <button onclick="sendMessage()">Отправить</button>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="clients.js"></script>
+
+</body>
+</html>
